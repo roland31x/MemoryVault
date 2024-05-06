@@ -1,0 +1,141 @@
+.body-div{
+    background-color: #353535;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding: 0;
+    width: 98vw;
+    min-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+.main-container{
+    min-height: 95vh;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.error{
+    color: rgb(183, 63, 63);
+}
+
+.absolute-center-h{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-div{
+    background-color: #000000;
+    color: white;
+    height: calc((3vh + 3vw) / 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.header-div{
+    background-color: #000000;
+    color: white;
+    height: calc((5vh + 5vw) / 2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.input-form{
+    background-color: #353535;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-form-label{
+    color: gainsboro;
+    font-size: calc((1.7vh + 1.7vw) / 2);
+}
+
+.input-form-input{
+    background-color: #353535;
+    color: white;
+    border: 1px solid #7d7d7d;
+    height: calc((2.7vh + 2.7vw) / 2);
+    font-size: calc((1.7vh + 1.7vw) / 2);
+    border-radius: 6px;
+}
+
+.generic-button{
+    background-color: #494949;
+    color: white;
+    border: 1px solid #7d7d7d;
+    font-size: calc((1.7vh + 1.7vw) / 2);
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.generic-button:hover{
+    background-color: #c5c5c5;
+    color: black;
+}
+
+.generic-link{
+    color: white;
+    text-decoration: none;
+}
+
+.generic-link:hover{
+    color: rgb(157, 157, 157);
+    cursor: pointer;
+}
+
+.th1{
+    font-size: calc((4.7vh + 4.7vw) / 2);
+    margin: calc((1.33vh + 1.33vw) / 2);
+    font-weight: bold;
+}
+
+.th2{
+    font-size: calc((3.4vh + 3.4vw) / 2);
+    margin: calc((0.8vh + 0.8vw) / 2);
+    font-weight: bold;
+}
+
+.th3{
+    font-size: calc((2.5vh + 2.5vw) / 2);
+}
+
+.th4{
+    font-size: calc((1.7vh + 1.7vw) / 2);
+}
+
+.tn1{
+    font-size: calc((1vh + 1vw) / 2);
+}
+
+.tn2{
+    font-size: calc((1.33vh + 1.33vw) / 2);
+}
+
+.toast{
+    background-color: #757575;
+    color: rgb(173, 173, 173);
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px 0px #000000;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
