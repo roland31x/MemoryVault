@@ -4,6 +4,7 @@
         $headers = [
             'Content-type: application/json'
         ];
+
         if($auth_token) {
             array_push($headers, $authorizationHeader);
         }
@@ -26,7 +27,11 @@
         ];
         $context = stream_context_create($options);
 
-        $response = file_get_contents($url, false, $context);
+        $response = @file_get_contents($url, false, $context);
+
+        if($response === FALSE) {
+            return false;
+        }
 
         return json_decode($response, true);
     }

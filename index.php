@@ -6,8 +6,8 @@
 
     if(isset($_SESSION['lg-token']) && !isset($_SESSION['user'])) {
         $resp = api_request($API_URL . 'Account/lgtoken', "GET", [], $_SESSION['lg-token']);
-
-        if(isset($resp)) {
+        
+        if($resp) {
             $_SESSION['user'] = $resp['data']['username'];
         }
     }
