@@ -1,5 +1,13 @@
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 
+# Exclude specific URL from rewriting
+RewriteCond %{REQUEST_URI} ajaxscripts [NC]
+RewriteRule ^ - [L]
+
+# Exclude specific file types from rewriting
+RewriteCond %{REQUEST_URI} \.css$ [OR]
+RewriteCond %{REQUEST_URI} \.js$
+RewriteRule ^ - [L]
+
+# Rewrite other requests to index.php
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

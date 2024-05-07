@@ -1,7 +1,9 @@
 <div class="absolute" style="top: 5%; left: 2%; z-index: 1000; width: 15%;">
     <?php
+        if(!isset($_SESSION['msgs'])){
+            $_SESSION['msgs'] = [];
+        }
         foreach($_SESSION['msgs'] as $index => $msg){
-
             echo 
             "<div class='toast tn2' style='color: white'>
                 <div>$msg</div>
@@ -17,7 +19,7 @@
             toast.remove();
         }
         $.ajax({
-            url: '/toasts/message-remove.php',
+            url: '/toasts/ajaxscripts/message-remove.php',
             type: 'POST',
             data: {
                 'index': index

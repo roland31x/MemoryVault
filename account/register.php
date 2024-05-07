@@ -8,14 +8,14 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if username and password are correct (you would validate against your database)
 
-        $url = $API_URL . 'Account/register';
+        $req_url = $API_URL . 'Account/register';
         $data = [
                 'Username' => $_POST['username'],
                 'Email' => $_POST['email'],
                 'Password' => $_POST['password'],         
         ]; // Data to send
         
-        $responsedata = api_request($url, "POST", $data, null);
+        $responsedata = api_request($req_url, "POST", $data, null);
 
         //var_dump($responsedata); // Debugging
 

@@ -6,14 +6,12 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Check if username and password are correct (you would validate against your database)
-    
-        $url = $API_URL . 'Account/login';
+        $req_url = $API_URL . 'Account/login';
         $data = [
             'Credential' => $_POST['username'],
             'Password' => $_POST['password'],
         ];
-        $responsedata = api_request($url, "POST", $data, null);
+        $responsedata = api_request($req_url, "POST", $data, null);
         if($responsedata){
             if($responsedata['status'] == 200) {
                 $_SESSION['lg-token'] = $responsedata['data']['token'];
