@@ -5,6 +5,9 @@
     if(isset($_SESSION['lg-token'])) {
         unset($_SESSION['lg-token']);
     }
+    if(isset($_SESSION['lg-exp'])) {
+        unset($_SESSION['lg-exp']);
+    }
     if(isset($_SESSION['role'])) {
         unset($_SESSION['role']);
     }

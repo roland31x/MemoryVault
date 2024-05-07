@@ -42,11 +42,14 @@
 ?>
 
 <div class="flex flex-column flex-center">
+    <a href="/memory/submit" class="generic-button" style="margin-top: 15px; width: 30%; text-decoration: none; text-align: center;">
+            Create a Memory
+    </a>
     <?php foreach($month_memories as $monthyr => $rest): ?>
         <div class="th3 text-light" style="margin-top: 25px;">
             --- <?= $monthyr?> ---
         </div>
-        <div class="flex flex-row flex-auto-overflow">
+        <div class="flex flex-row flex-auto-overflow flex-center">
             <?php foreach($rest as $memory): ?>
             <a href="/memory/<?= $memory['memoryID']; ?>" class="flex flex-column flex-space-between flex-center memory-card">
                 <img class="image active" src="data:image/png;base64,<?= $memory['images'][0]['bytes']; ?>" alt="Memory Image">

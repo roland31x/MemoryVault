@@ -15,6 +15,7 @@
         if($responsedata){
             if($responsedata['status'] == 200) {
                 $_SESSION['lg-token'] = $responsedata['data']['token'];
+                $_SESSION['lg-exp'] = time() + 604800;    
                 add_message("Logged in successfully!");
                 header("Location: /");
                 exit;

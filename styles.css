@@ -24,7 +24,7 @@
 }
 
 .main-container{
-    min-height: 95vh;
+    min-height: 88vh;
 }
 
 .absolute{
@@ -69,7 +69,6 @@
 
 .flex-auto-overflow{
     flex-wrap: wrap;
-    overflow: auto;
 }
 
 .absolute-center-h{
@@ -272,8 +271,9 @@
     border: 3px solid var(--dark-accent);
     border-radius: 6px;
     margin: calc((3vh + 3vw) / 2);
-    width: calc((16vh + 16vw) / 2);
+    max-width: calc((16vh + 16vw) / 2);
     box-shadow: 10px 10px 15px #000000;
+    height: auto;
     transition: all 0.3s ease-in-out;
     text-decoration: none;
 }
@@ -287,6 +287,15 @@
     font-size: calc((1.7vh + 1.7vw) / 2);
     font-weight: bold;
     padding: 12px 0;
+    width: 100%;
+    background-color: var(--dark-accent);
+    text-align: center;
+}
+
+.memory-card-sub-title{
+    font-size: calc((1.2vh + 1.2vw) / 2);
+    font-weight: bold;
+    padding: 5px 0;
     width: 100%;
     background-color: var(--dark-accent);
     text-align: center;
@@ -315,6 +324,6 @@
     display: grid;
     gap: 10px;
     padding: 10px;
-    grid-template-columns: 1fr 0.25fr 0.1fr 0.1fr 0.1fr;
+    grid-template-columns: 1fr 0.25fr 0.1fr 0.1fr;
     width: 80%;
 }

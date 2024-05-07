@@ -3,6 +3,12 @@
     include_once 'api_request.php';
     include_once 'toasts/message-service.php';
 
+    if(isset($_SESSION['lg-exp']) && $_SESSION['lg-exp'] < time()){
+        session_destroy();
+        session_start();
+        add_message("Session expired, please login again!");
+    }
+
     if(isset($_SESSION['lg-token']) && !isset($_SESSION['user'])) {
         $resp = api_request($API_URL . 'Account/lgtoken', "GET", [], $_SESSION['lg-token']);
         if($resp) {
@@ -24,7 +30,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Vault</title>
-    <link rel="stylesheet" href="/styles.css?v=4">
+    <link rel="stylesheet" href="/styles.css?v=5">
 </head>
 <body class="body-div">
     <?php

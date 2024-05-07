@@ -11,7 +11,7 @@
             Got a memory to cherish?
         </div>
         <a href="/memory/submit" class="generic-button" style="margin-top: 15px; width: 30%; text-decoration: none; text-align: center;">
-            Create Memory
+            Create One
         </a>
         ';
 
@@ -42,6 +42,31 @@
         <?php
             if(isset($_SESSION['user'])){
                 drawLoggedIn();
+
+                $random_memories = api_request($API_URL . 'Memory/random', "GET", null, $_SESSION['lg-token']);
+
+                echo '
+                <div class="th3 text-light" style="margin-top: 45px;">
+                    Here are some memories others shared:
+                </div>
+                <div class="flex flex-auto-overflow flex-row flex-center flex-center-v" style="max-width: 100%">
+                ';
+                foreach($random_memories['data'] as $memory){
+                    echo '
+                    <a href="/memory/' . $memory['memoryID'] . '" class="flex flex-space-between flex-column memory-card" style="margin-right: 15px;">
+                        <img class="image active" src="data:image/png;base64,' . $memory['images'][0]['bytes'] . '" alt="Memory Image">
+                        <div class="flex flex-column">
+                            <div class="memory-card-title">
+                                ' . $memory['name'] . '
+                            </div>
+                            <div class="memory-card-sub-title">
+                                Shared by ' . $memory['owner']['username'] . '
+                            </div>
+                        </div>
+                    </a>
+                    ';
+                }
+                echo '</div>';
             }
             else{
                 drawLoggedOut();

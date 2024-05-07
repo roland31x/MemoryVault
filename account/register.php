@@ -6,7 +6,6 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Check if username and password are correct (you would validate against your database)
 
         $req_url = $API_URL . 'Account/register';
         $data = [
@@ -17,12 +16,10 @@
         
         $responsedata = api_request($req_url, "POST", $data, null);
 
-        //var_dump($responsedata); // Debugging
-
         if($responsedata){
                 if($responsedata['status'] == 200) {
                         add_message("Account created successfully! Please login.");
-                        header("Location: /login"); 
+                        header("Location: /account/login"); 
                         exit;
                 }
                 else{

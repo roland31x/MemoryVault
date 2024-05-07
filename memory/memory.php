@@ -20,7 +20,7 @@ $mem_desc = $memory['description'];
 $mem_images = $memory['images'];
 $owner = $memory['owner'];
 
-$owned = $owner == $_SESSION['user'];
+$owned = $owner['username'] == $_SESSION['user'];
 
 ?>
 
@@ -55,7 +55,7 @@ $owned = $owner == $_SESSION['user'];
     ?>
 
     <div class="th4" style="margin-top: 15px;">
-        Posted on <?= $posted ?> by <a class="generic-link" href="profile/<?= $owner['accountID'] ?>"><?= $owner['username'] ?></a>
+        Posted on <?= $posted ?> by <a class="generic-link" href="/profile/<?= $owner['accountID'] ?>"><?= $owner['username'] ?></a>
     </div>
     
     <?php 

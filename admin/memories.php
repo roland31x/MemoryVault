@@ -15,9 +15,6 @@
         Owner
     </div>
     <div class="th4 text-light" style="grid-row: 1; grid-column: 3;">
-        Likes
-    </div>
-    <div class="th4 text-light" style="grid-row: 1; grid-column: 4;">
         Public
     </div>
     <?php 
@@ -29,13 +26,11 @@
                 <a href="/profile/' . $memory["ownerID"] . '" class="admin-card th4" style="grid-row:' . $index + 2 . '; grid-column:2;">
                     ' . $memory["owner"]["username"] . '
                 </a>
+
                 <div class="admin-card th4" style="grid-row:' . $index + 2 . '; grid-column: 3; text-align: center;">
-                    ' . 0 . '
-                </div>
-                <div class="admin-card th4" style="grid-row:' . $index + 2 . '; grid-column: 4; text-align: center;">
                     ' . ($memory["public"] === true ? "yes" : "no") . '
                 </div>
-                <div onclick="DeleteMemory(' . $memory["memoryID"] . ')" class="flex flex-center generic-button red-button th4" style="grid-row:' . $index + 2 . '; grid-column:5;">
+                <div onclick="DeleteMemory(' . $memory["memoryID"] . ')" class="flex flex-center generic-button red-button th4" style="grid-row:' . $index + 2 . '; grid-column:4;">
                     Delete
                 </div>
             ';

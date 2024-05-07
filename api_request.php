@@ -27,14 +27,15 @@
         ];
         $context = stream_context_create($options);
 
-        $response = file_get_contents($url, false, $context);
+        $response = @file_get_contents($url, false, $context);
 
         if($response === FALSE) {
-            return false;
+            return FALSE;
         }
 
         return json_decode($response, true);
     }
 
+    // Change this to your API URL
     $API_URL = 'https://localhost:7043/api/';
 ?>
