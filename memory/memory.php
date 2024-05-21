@@ -25,7 +25,34 @@ $owned = $owner['username'] == $_SESSION['user'];
 ?>
 
 <div class="flex flex-column flex-center text-light">
-    <div class="th2" style="margin-bottom: 15px;"><?= $mem_name ?></div>
+    <div class="flex flex-row flex-center" style="margin-bottom: 15px;">
+        <div class="th2">
+            <?= $mem_name ?>
+        </div>
+        <div class="generic-button flex flex-row flex-center th4" onclick="LikePost()">
+            <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" <?php
+                $found = false;
+                foreach($memory['likes'] as $like){
+                    if($like['likerID'] == $_SESSION['user_id']){
+                        $found = true;
+                        break;
+                    }
+                }
+                if($found){
+                    echo 'fill="crimson"';
+                }
+                else{
+                    echo 'fill="var(--light-text)"';
+                }
+            ?>>
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+            </svg>
+                    
+            <div id="likediv" style="margin-left: 10px;">
+                <?= count($memory['likes']) ?> 
+            </div> 
+        </div>
+    </div>
 
     <div class="image-viewer">
         <div class="image-browser abs-left-align" onclick="PrevImg()">
@@ -85,6 +112,35 @@ $owned = $owner['username'] == $_SESSION['user'];
         images[current].classList.remove('active');
         current = (current - 1 + images.length) % images.length;
         images[current].classList.add('active');
+    }
+
+    function LikePost(){
+
+        $.ajax({
+            url: '/memory/ajaxscripts/like.php',
+            type: 'POST',
+            data: {
+                mem_id: <?= $mem_id ?>
+            },
+            success: function(data){
+                console.log(data);
+                if(data == 'liked'){
+                    var likediv = document.getElementById('likediv');
+                    likediv.innerText = parseInt(likediv.textContent) + 1;
+                    var heart = document.querySelector('.heart');
+                    heart.setAttribute('fill', 'crimson');
+                }
+                else if(data == 'unliked'){
+                    var likediv = document.getElementById('likediv');
+                    likediv.innerText = parseInt(likediv.textContent) - 1;
+                    var heart = document.querySelector('.heart');
+                    heart.setAttribute('fill', 'var(--light-text)');
+                }
+                else{
+                    alert('Something went wrong...');
+                }
+            }
+        });
     }
 </script>
 

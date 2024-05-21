@@ -133,13 +133,31 @@
     border-radius: 8px;
     box-sizing: border-box;
     text-decoration: none;
-    padding: 10px 20px;
+    padding-left: calc((1.2vh + 1.2vw) / 2);
+    padding-right: calc((1.2vh + 1.2vw) / 2);
+    padding-top: calc((0.8vh + 0.8vw) / 2);
+    padding-bottom: calc((0.8vh + 0.8vw) / 2);
     cursor: pointer;
 }
 
 .generic-button:hover{
     background-color: var(--light-accent);
     color: var(--black);
+}
+
+.generic-button-nonhover{
+    background-color: var(--sec-bg);
+    color: var(--light-text);
+    border: 1px solid var(--dark-accent);
+    font-size: calc((1.7vh + 1.7vw) / 2);
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-decoration: none;
+    padding-left: calc((1.2vh + 1.2vw) / 2);
+    padding-right: calc((1.2vh + 1.2vw) / 2);
+    padding-top: calc((0.8vh + 0.8vw) / 2);
+    padding-bottom: calc((0.8vh + 0.8vw) / 2);
+    cursor: pointer;
 }
 
 .red-button{
@@ -242,6 +260,11 @@
     width: calc((5.2vh + 5.2vw) / 2);
 }
 
+.heart{
+    height: calc((1.5vh + 1.5vw) / 2);
+    width: calc((1.5vh + 1.5vw) / 2);
+}
+
 .image-browser:hover{
     opacity: 1;
 }
@@ -261,14 +284,18 @@
     display: none;
 }
 
+.border3{
+    border: 3px solid var(--black);
+}
+
 .image.active{
     display: block;
 }
 
 .memory-card{
-    background-color: var(--sec-bg);
-    color: var(--light-text);
-    border: 3px solid var(--dark-accent);
+    background-color: var(--light-text);
+    color: var(--black);
+    border: calc((1vh + 1vw) / 2) solid var(--light-text);
     border-radius: 6px;
     margin: calc((3vh + 3vw) / 2);
     max-width: calc((16vh + 16vw) / 2);
@@ -286,18 +313,20 @@
 .memory-card-title{
     font-size: calc((1.7vh + 1.7vw) / 2);
     font-weight: bold;
-    padding: 12px 0;
+    padding-top: calc((0.3vh + 0.3vw) / 2);
+    padding-bottom: calc((0.3vh + 0.3vw) / 2);
     width: 100%;
-    background-color: var(--dark-accent);
+    background-color: var(--light-text);
     text-align: center;
 }
 
 .memory-card-sub-title{
     font-size: calc((1.2vh + 1.2vw) / 2);
     font-weight: bold;
-    padding: 5px 0;
+    padding-top: calc((0.3vh + 0.3vw) / 2);
+    padding-bottom: calc((0.6vh + 0.6vw) / 2);
     width: 100%;
-    background-color: var(--dark-accent);
+    background-color: var(--light-text);
     text-align: center;
 }
 
@@ -326,4 +355,8 @@
     padding: 10px;
     grid-template-columns: 1fr 0.25fr 0.1fr 0.1fr;
     width: 80%;
+}
+
+.blackbg{
+    background-color: var(--black);
 }

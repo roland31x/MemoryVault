@@ -42,9 +42,32 @@
     <div class="flex flex-row flex-auto-overflow">
         <?php foreach($profile['publicMemories'] as $memory): ?>
             <a href="/memory/<?= $memory['memoryID']; ?>" class="flex flex-column flex-space-between flex-center memory-card">
-                <img class="image active" src="data:image/png;base64,<?= $memory['images'][0]['bytes']; ?>" alt="Memory Image">
+                <img class="image border3 blackbg active" src="data:image/png;base64,<?= $memory['images'][0]['bytes']; ?>" alt="Memory Image">
                 <div class="memory-card-title">
                     <?= $memory['name']; ?>
+                </div>
+                <div class="generic-button-nonhover flex flex-row flex-center th4">
+                    <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" <?php
+                        $found = false;
+                        foreach($memory['likes'] as $like){
+                            if($like['likerID'] == $_SESSION['user_id']){
+                                $found = true;
+                                break;
+                            }
+                        }
+                        if($found){
+                            echo 'fill="crimson"';
+                        }
+                        else{
+                            echo 'fill="var(--light-text)"';
+                        }
+                    ?>>
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                    </svg>
+                            
+                    <div id="likediv" style="margin-left: 10px;">
+                        <?= count($memory['likes']) ?> 
+                    </div> 
                 </div>
             </a>
         <?php endforeach; ?>
