@@ -229,7 +229,7 @@
 .image-viewer{
     position: relative;
     height: calc((40vh + 40vw) / 2);
-    width: calc((80vh + 80vw) / 2);
+    min-width: calc((20vh + 20vw) / 2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,15 +242,15 @@
 .image-browser{
     position: absolute;
     user-select: none;
-    height: calc((50vh + 50vw) / 2);
+    height: calc((40vh + 40vw) / 2);
     width: calc((10vh + 10vw) / 2);
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: transparent;
     opacity: 0;
-    border-radius: 6px;
     transition: opacity 0.5s ease-in-out;
+    background-color: #000000;
     cursor: pointer;
 }
 
@@ -266,7 +266,7 @@
 }
 
 .image-browser:hover{
-    opacity: 1;
+    opacity: 0.66;
 }
 
 .abs-left-align{

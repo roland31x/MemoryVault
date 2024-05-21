@@ -52,23 +52,20 @@
         <div class="flex flex-row flex-auto-overflow flex-center">
             <?php foreach($rest as $memory): ?>
             <a href="/memory/<?= $memory['memoryID']; ?>" class="flex flex-column flex-space-between flex-center memory-card">
-                <img class="image border3 blackbg active" src="data:image/png;base64,<?= $memory['images'][0]['bytes']; ?>" alt="Memory Image">
+                <img class="image border3 blackbg active" src="data:image/png;base64,<?= $memory['mainImage']['bytes']; ?>" alt="Memory Image">
                 <div class="memory-card-title">
                     <?= $memory['name']; ?>
                 </div>
                 <?php
                     if($memory["public"] == true){
-                        $found = false;
-                        $fillcolor = 'fill="var(--light-text)"';
-                        foreach($memory['likes'] as $like){
-                            if($like['likerID'] == $_SESSION['user_id']){
-                                $found = true;
-                                break;
-                            }
-                        }
-                        if($found){
+                        
+                        if($memory['likedByUser']){
                             $fillcolor = 'fill="crimson"';
                         }
+                        else{
+                            $fillcolor = 'fill="var(--light-text)"';
+                        }
+                        
                         echo'
                         <div class="generic-button-nonhover flex flex-row flex-center th4">
                             <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"' . $fillcolor . '>
@@ -76,7 +73,7 @@
                             </svg>
                                     
                             <div id="likediv" style="margin-left: 10px;">
-                                ' . count($memory['likes']) . ' 
+                                ' . $memory['likes'] . ' 
                             </div> 
                         </div>
                         ';

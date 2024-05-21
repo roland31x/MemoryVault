@@ -30,7 +30,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Vault</title>
-    <link rel="stylesheet" href="/styles.css?v=1">
+    <link rel="stylesheet" href="/styles.css?v=4">
 </head>
 <body class="body-div">
     <?php

@@ -18,9 +18,8 @@ $posted = date('F jS, Y', strtotime($memory['postDate']));
 $mem_name = $memory['name'];
 $mem_desc = $memory['description'];
 $mem_images = $memory['images'];
-$owner = $memory['owner'];
 
-$owned = $owner['username'] == $_SESSION['user'];
+$owned = $memory['ownerID'] == $_SESSION['user_id'];
 
 ?>
 
@@ -55,16 +54,23 @@ $owned = $owner['username'] == $_SESSION['user'];
     </div>
 
     <div class="image-viewer">
-        <div class="image-browser abs-left-align" onclick="PrevImg()">
-            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-            </svg>
-        </div>
-        <div class="image-browser abs-right-align" onclick="NextImg()">
-            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-            </svg>
-        </div>
+        <?php
+            if(count($mem_images) > 1){
+                echo '
+                <div class="image-browser abs-left-align" onclick="PrevImg()">
+                    <svg class="arrow" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                    </svg>
+                </div>
+                <div class="image-browser abs-right-align" onclick="NextImg()">
+                    <svg class="arrow" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                    </svg>
+                </div>
+                ';           
+            }
+        ?>
+        
         <?php foreach ($mem_images as $index => $image): ?>
             <img class="image<?= $index === 0 ? ' active' : '' ?>" src="data:image/png;base64,<?= $image['bytes'] ?>" alt="Memory Image">
         <?php endforeach; ?>
@@ -82,7 +88,7 @@ $owned = $owner['username'] == $_SESSION['user'];
     ?>
 
     <div class="th4" style="margin-top: 15px;">
-        Posted on <?= $posted ?> by <a class="generic-link" href="/profile/<?= $owner['accountID'] ?>"><?= $owner['username'] ?></a>
+        Posted on <?= $posted ?> by <a class="generic-link" href="/profile/<?= $memory['ownerID'] ?>"><?= $memory['ownerName'] ?></a>
     </div>
     
     <?php 

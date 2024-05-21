@@ -53,27 +53,23 @@
                 ';
                 foreach($random_memories['data'] as $memory){
 
-                    $found = false;
-                    $fillcolor = 'fill="var(--light-text)"';
-                    foreach($memory['likes'] as $like){
-                        if($like['likerID'] == $_SESSION['user_id']){
-                            $found = true;
-                            break;
-                        }
-                    }
-                    if($found){
+                    if($memory['likedByUser']){
                         $fillcolor = 'fill="crimson"';
                     }
+                    else{
+                        $fillcolor = 'fill="var(--light-text)"';
+                    }
+
                     echo '
                     <a href="/memory/' . $memory['memoryID'] . '" class="flex flex-space-between flex-column flex-center memory-card" style="margin-right: 15px;">
-                        <img class="image border3 blackbg active" src="data:image/png;base64,' . $memory['images'][0]['bytes'] . '" alt="Memory Image">
+                        <img class="image border3 blackbg active" src="data:image/png;base64,' . $memory['mainImage']['bytes'] . '" alt="Memory Image">
                         
                             <div class="memory-card-title">
                                 ' . $memory['name'] . '
                             </div>
                             
                             <div class="memory-card-sub-title">
-                                Shared by ' . $memory['owner']['username'] . '
+                                Shared by ' . $memory['ownerName'] . '
                             </div>
 
                             <div class="generic-button-nonhover flex flex-row flex-center th4">
@@ -82,7 +78,7 @@
                                 </svg>
                                         
                                 <div id="likediv" style="margin-left: 10px;">
-                                    ' . count($memory['likes']) . ' 
+                                    ' . $memory['likes'] . ' 
                                 </div> 
                             </div>
                         

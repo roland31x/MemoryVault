@@ -1,6 +1,8 @@
 <?php 
     $response = api_request($API_URL . 'Memory/admin/get', "GET", null, $_SESSION['lg-token']);
     $total_memories = $response['data'];
+
+    var_dump($total_memories);
 ?>
 
 <div class="th1 text-light">
@@ -17,20 +19,28 @@
     <div class="th4 text-light" style="grid-row: 1; grid-column: 3;">
         Public
     </div>
+    <div class="th4 text-light" style="grid-row: 1; grid-column: 4;">
+        Likes
+    </div>
     <?php 
         foreach ($total_memories as $index => $memory) {
             echo '
                 <a href="/memory/' . $memory["memoryID"] . '" class="admin-card th4" style="grid-row:' . $index + 2 . '; grid-column: 1;">
                     ' . $memory["name"] . '
                 </a>
-                <a href="/profile/' . $memory["ownerID"] . '" class="admin-card th4" style="grid-row:' . $index + 2 . '; grid-column:2;">
-                    ' . $memory["owner"]["username"] . '
+                <a href="/profile/' . $memory["ownerID"] . '" class="admin-card th4" style="grid-row:' . $index + 2 . '; grid-column: 2;">
+                    ' . $memory["ownerName"] . '
                 </a>
 
                 <div class="admin-card th4" style="grid-row:' . $index + 2 . '; grid-column: 3; text-align: center;">
                     ' . ($memory["public"] === true ? "yes" : "no") . '
                 </div>
-                <div onclick="DeleteMemory(' . $memory["memoryID"] . ')" class="flex flex-center generic-button red-button th4" style="grid-row:' . $index + 2 . '; grid-column:4;">
+
+                <div class="admin-card th4" style="grid-row:' . $index + 2 . '; grid-column: 4; text-align: center;">
+                    ' . ($memory["likes"]) . '
+                </div>
+
+                <div onclick="DeleteMemory(' . $memory["memoryID"] . ')" class="flex flex-center generic-button red-button th4" style="grid-row:' . $index + 2 . '; grid-column:5;">
                     Delete
                 </div>
             ';
