@@ -1,8 +1,6 @@
 <?php 
     $response = api_request($API_URL . 'Memory/admin/get', "GET", null, $_SESSION['lg-token']);
     $total_memories = $response['data'];
-
-    var_dump($total_memories);
 ?>
 
 <div class="th1 text-light">
